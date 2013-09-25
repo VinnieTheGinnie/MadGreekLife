@@ -1,0 +1,32 @@
+Greek Life APP Log File 
+
+4/11/2013 (Vinnie Vendemia)
+
+- Added Process loader to Splash Screen
+
+- Created class ListLoader, an AsyncTask that loads all the lists before the app starts running 
+ 
+- HttpConnectionFailedThrowable
+	- When attempting to do a query if the connection fails, throw this, catch it in calling function
+		and make a toast (as done in FratView class)
+		
+- ActionBar, 
+	- now basically the main view of the app.  After SplashScreen has run, ActionBar appears 
+
+- Main Activity 
+	- now just contains a search bar, search still functions as normal, However, need to figure out a way 
+		so that after the search is performed, the output still remains in the tabView (ActionBar)
+		
+Event 
+	- Now implements parcelable, so it can be passed into a new Activity through Intent 
+	
+EventListLoader 
+	- loads all the events that the user is subscribed too in an AsyncTask 
+		- Upon failure, a failure Event is added to the list, the list will still appear, 
+			but there will only be 1 event, a failure event, that basically notifies the 
+			user that the event query has failed 
+	- executed from the SplashScreen so all events are loaded upon App Start 
+	
+EventView 
+	- Only has to find names of subscribed events
+	- No longer has to calculate what events the user is subscribed too
