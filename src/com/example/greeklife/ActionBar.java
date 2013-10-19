@@ -4,20 +4,24 @@ package com.example.greeklife;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.MenuItem;
 import com.example.greeklife.adapters.MenuListAdapter;
 import com.example.greeklife.ui.FraternityListView;
 
 
-public class ActionBar extends SherlockFragmentActivity {
+public class ActionBar extends ActionBarActivity {
 
+	
+	private final static String TAG = "ActionBar";
+	
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
 	String[] subtitle;
@@ -55,6 +59,7 @@ public class ActionBar extends SherlockFragmentActivity {
 		Globals.mDrawerList.setAdapter(Globals.mMenuAdapter);
 
 		Globals.mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+		Log.d(TAG, "DEBUG");
 
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
@@ -69,12 +74,12 @@ public class ActionBar extends SherlockFragmentActivity {
 				R.string.drawer_close  /* "close drawer" description for accessibility */
 				) {
 			public void onDrawerClosed(View view) {
-				getSupportActionBar().setTitle(mTitle);
+//				getSupportActionBar().setTitle(mTitle);
 				supportInvalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
 			}
 
 			public void onDrawerOpened(View drawerView) {
-				getSupportActionBar().setTitle(mDrawerTitle);
+//				getSupportActionBar().setTitle(mDrawerTitle);
 				supportInvalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
 			}
 		};
