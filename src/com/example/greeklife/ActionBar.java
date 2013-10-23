@@ -2,9 +2,10 @@ package com.example.greeklife;
 
 
 import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -37,7 +38,8 @@ public class ActionBar extends ActionBarActivity {
 
 		mTitle = mDrawerTitle = Constants.mMainTitle;
 		getSupportActionBar().setTitle(mTitle);
-		
+		int fraternityBgColor = getResources().getColor(R.color.fraternity_background);
+		getSupportActionBar().setBackgroundDrawable(new ColorDrawable(fraternityBgColor));
 		
 		Globals.mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		Globals.mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -89,7 +91,9 @@ public class ActionBar extends ActionBarActivity {
 		Globals.mDrawerLayout.setDrawerListener(mDrawerToggle);
 
 		if (savedInstanceState == null) {
-
+			
+			Globals.mDrawerList.setBackgroundColor(fraternityBgColor);
+			
 			fratListView = new FraternityListView();
 			getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fratListView).commit();
 			Globals.mDrawerList.setItemChecked(Constants.FRAT_DRAWER_POSITION, true);
@@ -110,12 +114,26 @@ public class ActionBar extends ActionBarActivity {
 
 		// update the main content by replacing fragments
 		if(position == Constants.FRAT_DRAWER_POSITION) {
-
-
+			Resources res = getResources();
+			int fraternityBgColor = res.getColor(R.color.fraternity_background);
+			getSupportActionBar().setBackgroundDrawable(new ColorDrawable(fraternityBgColor));
+			getSupportActionBar().setDisplayShowTitleEnabled(false);
+			getSupportActionBar().setDisplayShowTitleEnabled(true);
+			Globals.mDrawerList.setBackgroundColor(fraternityBgColor);
+			
+			Globals.mDrawerList.setItemChecked(Constants.FRAT_DRAWER_POSITION, true);
+			Globals.mDrawerLayout.closeDrawer(Globals.mDrawerList);
+			
 		} else if(position == Constants.SORO_DRAWER_POSITION) {
-
-
-
+			Resources res = getResources();
+			int sororityBgColor = res.getColor(R.color.sorority_background);
+			getSupportActionBar().setBackgroundDrawable(new ColorDrawable(sororityBgColor));
+			getSupportActionBar().setDisplayShowTitleEnabled(false);
+			getSupportActionBar().setDisplayShowTitleEnabled(true);
+			Globals.mDrawerList.setBackgroundColor(sororityBgColor);
+			
+			Globals.mDrawerList.setItemChecked(Constants.SORO_DRAWER_POSITION , true);
+			Globals.mDrawerLayout.closeDrawer(Globals.mDrawerList);
 
 		} else if(position == Constants.COED_DRAWER_POSITION) {
 

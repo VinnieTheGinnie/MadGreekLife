@@ -19,14 +19,14 @@ public class FraternityAdapter extends ArrayAdapter<GreekGroup>{
 	@InjectView(R.id.fraternity_name) TextView fratName;
 	@InjectView(R.id.fraternity_description) TextView fratDescription;
 
+	Context context;
+	List<GreekGroup> mGreekGroupList;
+	
 
-	private ArrayList<GreekGroup> mGreekGroupList = new ArrayList<GreekGroup>();
-	private LayoutInflater mInflater;
-
-	public FraternityAdapter(Context context, int resource,
-			int textViewResourceId, List<GreekGroup> objects) {
-		super(context, resource, textViewResourceId, objects);
-		// TODO Auto-generated constructor stub
+	public FraternityAdapter(Context context, int resource, List<GreekGroup> objects) {
+		super(context,resource, objects);
+		this.context = context;
+		this.mGreekGroupList = objects;
 	}
 
 	@Override
@@ -38,14 +38,13 @@ public class FraternityAdapter extends ArrayAdapter<GreekGroup>{
 	public View getView(int position, View convertView, ViewGroup parent) {
 
 		if(convertView == null) {
-			convertView = mInflater.inflate(R.layout.fraternity_list_item, null);
+			convertView = View.inflate(context, R.layout.fraternity_list_item, null);
 		}
 		Views.inject(this, convertView);
 		
 		fratName.setText(mGreekGroupList.get(position).name);
 		fratDescription.setText(mGreekGroupList.get(position).description);
 		
-
 		return convertView;
 
 	}

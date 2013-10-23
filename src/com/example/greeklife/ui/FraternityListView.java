@@ -1,5 +1,8 @@
 package com.example.greeklife.ui;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,15 +15,20 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import butterknife.InjectView;
+import butterknife.Views;
 
-import com.example.greeklife.Globals;
 import com.example.greeklife.R;
+import com.example.greeklife.adapters.FraternityAdapter;
+import com.example.greeklife.models.GreekGroup;
 
 public class FraternityListView extends Fragment implements OnScrollListener{
+	
+	
 	@InjectView(R.id.fraternity_list) ListView groupList;
 	View view;
-
-
+	FraternityAdapter mFratAdapter;
+	List<GreekGroup> mFraternityList;
+	
 	public FraternityListView() {
 		//Stub
 	}
@@ -30,20 +38,21 @@ public class FraternityListView extends Fragment implements OnScrollListener{
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreateView(inflater, container, savedInstanceState);
-
-		view = inflater.inflate(R.layout.frg_frat_list, container, false);
-
-		groupList = (ListView) view.findViewById(R.id.fraternity_list);
-
-
+		view = inflater.inflate(R.layout.frg_frat_list, container, false);		
+		Views.inject(this, view);
+		
+		
+		mFraternityList = new ArrayList<GreekGroup>();
+		
+		//TEST LINE, MUST REMOVE BEFORE PRODUCTION 
+		generateTestFraternities();
+		
+		
 		// Have to add footer view before setting the adapter, so add an empty frame layout then remove it
-		FrameLayout blankLayout = new FrameLayout(getActivity());
-		groupList.addFooterView(blankLayout);
-
-		groupList.setAdapter(Globals.mFratAdapter);
+		mFratAdapter = new FraternityAdapter(getActivity(), 0, mFraternityList );
+		groupList.setAdapter(mFratAdapter);
 		groupList.setOnScrollListener(this);
-		groupList.removeFooterView(blankLayout);
-
+		
 		groupList.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -55,6 +64,18 @@ public class FraternityListView extends Fragment implements OnScrollListener{
 
 
 		return view;
+	}
+	
+	//Test Method, Do not use in production app
+	private void generateTestFraternities() {
+		
+		for(int i=0; i < 100 ; i++) {
+			String ii = Integer.toString(i);
+			GreekGroup curr = new GreekGroup(ii, "Fraternity " + ii, 
+					"Test Description for this fraternity" , "1234 Address" , "Joe Schmo" , "joe@schmo.com");
+			mFraternityList.add(curr);
+		}
+		
 	}
 
 	@Override

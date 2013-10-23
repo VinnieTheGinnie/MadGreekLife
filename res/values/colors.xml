@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+    <drawable name="white_background">#FFFFFF</drawable>
+    <color name="sorority_background">#ff00ff</color>
+    <color name="fraternity_background">#0000ff</color>
+</resources>

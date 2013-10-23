@@ -794,10 +794,13 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f070002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f080003;
+        public static final int abc_search_url_text_holo=0x7f080006;
         public static final int abc_search_url_text_normal=0x7f080000;
         public static final int abc_search_url_text_pressed=0x7f080002;
         public static final int abc_search_url_text_selected=0x7f080001;
+        public static final int fraternity_background=0x7f080005;
+        public static final int sorority_background=0x7f080004;
+        public static final int white=0x7f080003;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -981,6 +984,7 @@ containing a value of this type.
         public static final int ic_drawer=0x7f020058;
         public static final int ic_launcher=0x7f020059;
         public static final int umdsplash=0x7f02005a;
+        public static final int white_background=0x7f02005b;
     }
     public static final class id {
         public static final int action_bar=0x7f06001a;
@@ -996,7 +1000,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f06002f;
         public static final int action_mode_bar_stub=0x7f06002e;
         public static final int action_mode_close_button=0x7f060022;
-        public static final int action_settings=0x7f060057;
+        public static final int action_settings=0x7f060058;
         public static final int activity_chooser_view_content=0x7f060023;
         public static final int address=0x7f060045;
         public static final int always=0x7f06000b;
@@ -1018,9 +1022,10 @@ containing a value of this type.
         public static final int expand_activities_button=0x7f060024;
         public static final int expanded_menu=0x7f06002a;
         public static final int fratImage=0x7f060048;
-        public static final int fraternity_description=0x7f060052;
-        public static final int fraternity_list=0x7f060054;
-        public static final int fraternity_name=0x7f060051;
+        public static final int fraternity_description=0x7f060053;
+        public static final int fraternity_letters=0x7f060051;
+        public static final int fraternity_list=0x7f060055;
+        public static final int fraternity_name=0x7f060052;
         public static final int home=0x7f060014;
         public static final int homeAsUp=0x7f060005;
         public static final int host=0x7f060042;
@@ -1032,13 +1037,13 @@ containing a value of this type.
         public static final int listMode=0x7f060001;
         public static final int list_item=0x7f060027;
         public static final int main_frame=0x7f06004e;
-        public static final int menu_settings=0x7f060056;
+        public static final int menu_settings=0x7f060057;
         public static final int middle=0x7f060012;
         public static final int name=0x7f060043;
         public static final int never=0x7f060009;
         public static final int none=0x7f060010;
         public static final int normal=0x7f060000;
-        public static final int progressBar1=0x7f060055;
+        public static final int progressBar1=0x7f060056;
         public static final int progress_circular=0x7f060034;
         public static final int progress_horizontal=0x7f060035;
         public static final int radio=0x7f06002d;
@@ -1059,7 +1064,7 @@ containing a value of this type.
         public static final int showHome=0x7f060004;
         public static final int showTitle=0x7f060006;
         public static final int split_action_bar=0x7f06001c;
-        public static final int stores=0x7f060053;
+        public static final int stores=0x7f060054;
         public static final int submit_area=0x7f06003f;
         public static final int subscribe=0x7f060049;
         public static final int subtitle=0x7f060050;

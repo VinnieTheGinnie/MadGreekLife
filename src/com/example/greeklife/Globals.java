@@ -16,6 +16,5 @@ public class Globals {
 	public static DrawerLayout mDrawerLayout;
 	static MenuListAdapter mMenuAdapter;
 	
-	public static FraternityAdapter mFratAdapter;
 	
 }
