@@ -1,5 +1,9 @@
 package com.example.greeklife.ui;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +49,7 @@ public class FraternityListView extends Fragment implements OnScrollListener{
 		mFraternityList = new ArrayList<GreekGroup>();
 		
 		//TEST LINE, MUST REMOVE BEFORE PRODUCTION 
-		generateTestFraternities();
+		generateFraternities();
 		
 		
 		// Have to add footer view before setting the adapter, so add an empty frame layout then remove it
@@ -76,6 +80,41 @@ public class FraternityListView extends Fragment implements OnScrollListener{
 			mFraternityList.add(curr);
 		}
 		
+	}
+	
+	private void generateFraternities() {
+		
+		final InputStream frat_file = this.getResources().openRawResource(R.raw.fraternity);
+		
+			InputStreamReader inputStreamReader = new InputStreamReader(frat_file);
+			BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+			
+			String line = "";
+			/*list will contain all the names of the sororities that will
+			 * be displayed when the sorority button is clicked*/
+			ArrayList<String> list = new ArrayList<String>();
+			/*There has to be a try/catch block because there might not
+			 * be a file and it has to be handled*/
+			try {
+				/*this says while it's not the end of file yet and assigns each
+				 * line to the variable 'line'*/
+				int count = 0;
+				while((line = bufferedReader.readLine()) != null){
+					/*adds each line to the arraylist that
+					 * will be used to display all the sororities*/
+					list.add(line.toString());
+					GreekGroup curr = new GreekGroup(Integer.toString(count), list.get(count), 
+							"Test Description for this fraternity" , "1234 Address" , "Joe Schmo" , "joe@schmo.com");
+					mFraternityList.add(curr);
+					
+				}
+				frat_file.reset();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
 	}
 
 	@Override
